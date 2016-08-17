@@ -26,7 +26,7 @@ define('DB_NAME', 'testshop');
 define('DB_USER', 'root');
 
 /** Пароль к базе данных MySQL */
-define('DB_PASSWORD', '');
+define('DB_PASSWORD', 'root');
 
 /** Имя сервера MySQL */
 define('DB_HOST', 'localhost');
@@ -77,7 +77,7 @@ $table_prefix  = 'wp_';
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
 define('WP_DEBUG', false);
-
+define('FS_METHOD','direct');
 /* Это всё, дальше не редактируем. Успехов! */
 
 /** Абсолютный путь к директории WordPress. */
