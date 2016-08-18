@@ -1,0 +1,11 @@
+zooshop.esy.es
+hosting
+    pass: eyZZsdxe0T
+db
+    name: u848225257_zoo
+    user: u848225257_dima
+    pass: y4SkCJHmo0
+ftp
+    host	31.220.16.243
+    user: 	u848225257
+    pass:       eyZZsdxe0T

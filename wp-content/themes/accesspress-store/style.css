@@ -4351,8 +4351,7 @@ a.quick-wishlist {
  
 }
 .view-cart a.wcmenucart-contents {
-    color: #919191;
-    text-transform: uppercase;
+    color: #288340;
 }
 .headertwo .headertwo-wrap a:hover {
     color: #e24747;
@@ -4411,7 +4410,7 @@ a.quick-wishlist {
     margin: 0px;
 }
 #site-navigation .menu>li>a {
-    padding: 13px 15px;
+    padding: 13px 40px;
     font-size: 14px;
     text-decoration: none;
     text-transform: uppercase;
@@ -4560,29 +4559,28 @@ a.quick-wishlist {
 }
 .search-form button.searchsubmit {
     cursor: pointer;
-    background: #e24545;
-    height: 100%;
-    border: 2px solid #e24545;
+    background: #FFA500;
+    border: 1px solid #FFA500;
     color: #ffffff;
-    font-size: 12px;
-    line-height: 24px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100%;
+    font-size: 16px;
+    line-height: 30px;
+    top: 1px;
+    height: 34px;
+    width: 84px;
+    position: relative;
 }
 .search-form input.search-field {
     border-radius: 0px;
-    border: none;
+    border: 2px solid #FFA500;
     background: transparent;
     padding:3px 35px 3px 15px;
     line-height: 24px;
     color: #666;
     font-size: 13px;
+    width: 419px
 }
 .search-form {
     float: right;
-    background: #efefef;
     position: relative;
 }
 
@@ -4603,6 +4601,15 @@ a.quick-wishlist {
     font-size: 14px;
     transition: all ease 0.4s;
     -webkit-transition: all ease 0.4s;
+}
+
+#mastheads .orange-line{
+    background: #FFA500 none repeat scroll 0 0;
+    padding-left:20px;
+}
+
+#mastheads .orange-line a{
+    color: #ffffff;
 }
 .headertwo .headertwo-wrap .search-form button.searchsubmit:hover {
     background: #e24545;
