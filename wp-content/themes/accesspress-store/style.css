@@ -5529,7 +5529,7 @@ span.onsale:after,
     display: block;
     line-height: 35px;
     background: url("images/signup.png") no-repeat right;
-    border-bottom: 3px solid #ef9999;
+    border-bottom: 3px solid #FFA500;
     position: relative;
     margin-bottom: 20px;
     color: #5a5a5a;
@@ -5537,6 +5537,14 @@ span.onsale:after,
     font-weight: 700;
     overflow: hidden;
 }
+#secondary.sidebar .product-categories{
+    background: #D8FCD6;
+    
+}
+#secondary.sidebar .product-categories a{
+    color: #313131;
+}
+
 #secondary.sidebar .widget-title {
     margin-bottom: 5px;
 }
@@ -5594,7 +5602,8 @@ li.cat-parent {
 }
 #secondary.sidebar ul li:hover>a,
 #secondary.sidebar ul li:hover {
-    color: #e24545;
+    background: #288340;
+    color: #FFF;
     /*border-color: #e24545;*/
 }
 #secondary.sidebar ul li a span:hover {
