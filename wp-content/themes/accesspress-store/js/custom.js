@@ -148,5 +148,8 @@ jQuery(function ($) {
     $('.ticker-wrapper').show();
 
 $('.navigation').addClass("clearfix");
-
+    /**/
+    $(".orange-line .close").click(function(){
+        $(".orange-line").hide();
+    });
 });//doc close

@@ -851,6 +851,7 @@ object {
 }
 .both-sidebar #primary {
     float: right;
+    width:68%;
 }
 .no-sidebar #primary {
     width: 100%;
@@ -867,7 +868,7 @@ object {
 }
 .both-sidebar #secondary.secondary-right {
     float: right;
-    width: 23%
+    width: 20%
 }
 body.boxed #page {
     width: 1170px;
@@ -4577,11 +4578,12 @@ a.quick-wishlist {
     line-height: 24px;
     color: #666;
     font-size: 13px;
-    width: 419px
+    width: 80%;
 }
 .search-form {
     float: right;
     position: relative;
+    width: 44%;
 }
 
 .headertwo .headertwo-wrap .search-form {
@@ -4603,13 +4605,22 @@ a.quick-wishlist {
     -webkit-transition: all ease 0.4s;
 }
 
-#mastheads .orange-line{
+.orange-line{
     background: #FFA500 none repeat scroll 0 0;
     padding-left:20px;
+    position:fixed;
+    width:100%;
+    z-index:999;
 }
 
-#mastheads .orange-line a{
+.orange-line a{
     color: #ffffff;
+}
+.orange-line .close{
+    float: right;
+    margin-right: 30px;
+    color: #ffffff;
+    cursor: pointer;
 }
 .headertwo .headertwo-wrap .search-form button.searchsubmit:hover {
     background: #e24545;
@@ -5543,6 +5554,8 @@ span.onsale:after,
 }
 #secondary.sidebar .product-categories a{
     color: #313131;
+    width: 100%;
+    display: block;
 }
 
 #secondary.sidebar .widget-title {
@@ -5602,7 +5615,7 @@ li.cat-parent {
 }
 #secondary.sidebar ul li:hover>a,
 #secondary.sidebar ul li:hover {
-    background: #288340;
+    background: #84AA47;
     color: #FFF;
     /*border-color: #e24545;*/
 }
@@ -6999,4 +7012,41 @@ nav.woocommerce-MyAccount-navigation ul li a {
 }
 .woocommerce-account .woocommerce-MyAccount-content {
     width: 73%;
+}
+
+.category-item{
+    float:left;
+    max-width: 180px;
+    border: 2px solid #84AA47;
+    margin: 3px 5px;
+    background: #FFFFFF;
+/*    margin: 5px 3px;*/
+}
+.category-item .image-wrap{
+    height: 150px;
+}
+ a{
+    height: 100%;
+}
+.category-item .image-wrap img{
+    width:100%;
+    height:auto;
+}
+.category-item p{
+    text-align: center;
+}
+.category-item .title{
+    margin-top: 5px;
+}
+
+.homeless-widget > .title{
+    font-weight: bold;
+    font-size: 18px;
+}
+.homeless-widget{
+    font-style: italic;
+    color: #9a9ea8;
+}
+.homeless-widget .homeless-item .title{
+    font-size: 16px;
 }

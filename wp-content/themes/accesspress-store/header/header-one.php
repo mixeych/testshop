@@ -1,5 +1,5 @@
 <header id="mastheads" class="site-header" role="banner">
-    <div class="orange-line"><?php echo do_shortcode('[sg_popup id=1]Заказать звонок[/sg_popup]') ?></div>
+    
     <div class="before-top-header">
         <div class="ak-container clearfix">
             <?php if ( accesspress_store_before_top_header_enabled() ): ?>

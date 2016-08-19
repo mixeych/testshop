@@ -181,7 +181,10 @@ require get_template_directory() . '/inc/class/class-custom-switch.php';
  */
 require get_template_directory() . '/inc/class/class-custom-categories.php';
 
-
+/*
+ * Load Custom Post types
+ */
+require get_template_directory() . '/inc/custom-post-types.php';
 /**
  * AccessPress More Themes
  */
