@@ -22,7 +22,6 @@ do_action('accesspress_slickslider');
                 <?php 
                 $args = array(
                     'taxonomy' => 'product_cat',
-                    'hide_empty' => 0
                 );
                 $terms = get_terms($args);
                 if(!empty($terms)):
