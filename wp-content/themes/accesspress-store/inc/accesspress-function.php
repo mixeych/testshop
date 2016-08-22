@@ -155,6 +155,15 @@ function accesspress_store_widgets_init() {
 		'before_title'  => '<h1 class="widget-title">',
 		'after_title'   => '</h1>',
 	) );
+	register_sidebar( array(
+		'name'          => __( 'Brand Sidebar', 'accesspress-store' ),
+		'id'            => 'brand-sidebar',
+		'description'   => '',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<h1 class="widget-title">',
+		'after_title'   => '</h1>',
+	) );
 	
 }
 add_action( 'widgets_init', 'accesspress_store_widgets_init' );
@@ -197,6 +206,7 @@ function accesspress_store_scripts() {
 	}
 
 	wp_enqueue_script( 'accesspress-custom-js', get_template_directory_uri() . '/js/custom.js', array('jquery'), '1.0.0', true );
+	wp_enqueue_script( 'jCarousel', get_template_directory_uri() . '/js/jCarousel.js', array('jquery'), '1.0.0', false );
 }
 add_action( 'wp_enqueue_scripts', 'accesspress_store_scripts' );
 

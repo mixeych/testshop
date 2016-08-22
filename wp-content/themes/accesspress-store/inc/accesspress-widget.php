@@ -73,3 +73,5 @@ require get_template_directory() . '/inc/widgets/widget-cta-video.php';
 require get_template_directory() . '/inc/widgets/widget-full-promo.php';
 
 require get_template_directory() . '/inc/widgets/widget-homeless.php';
+
+require get_template_directory() . '/inc/widgets/widget-brands.php';

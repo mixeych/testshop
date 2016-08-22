@@ -73,10 +73,12 @@ q {
 }
 a:focus {
     outline: 0;
+    text-decoration: none;
 }
 a:hover,
 a:active {
     outline: 0;
+    text-decoration: none;
 }
 a img {
     border: 0;
