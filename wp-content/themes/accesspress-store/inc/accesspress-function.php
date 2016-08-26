@@ -156,8 +156,8 @@ function accesspress_store_widgets_init() {
 		'after_title'   => '</h1>',
 	) );
 	register_sidebar( array(
-		'name'          => __( 'Brand Sidebar', 'accesspress-store' ),
-		'id'            => 'brand-sidebar',
+		'name'          => __( 'Subcategory Sidebar', 'accesspress-store' ),
+		'id'            => 'subcategory-sidebar',
 		'description'   => '',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',

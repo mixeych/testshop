@@ -64,7 +64,7 @@ class BrandsSliderWidget extends WP_Widget {
     height: auto;
     margin: 0 auto;
 }
-.brands-widget .jcarousel-prev, .jcarousel-next {
+.brands-widget .jcarousel-prev, .brands-widget .jcarousel-next {
     border: 0 none;
     border-radius: 0;
     box-shadow: none;
@@ -107,19 +107,20 @@ class BrandsSliderWidget extends WP_Widget {
         </div>
             <script>
                 jQuery(function($){
-                    console.log(123);
-                    $('.jcarousel').jcarousel({
+                    $('.brands-widget .jcarousel').jcarousel({
                         wrap: 'circular',
                         animation: {
                             duration: 600,
                             interval: 1
                         }
                     });
-                    $('.jcarousel-prev').jcarouselControl({
+                    $('.brands-widget .jcarousel-prev').jcarouselControl({
+                        carousel: $('.brands-widget .jcarousel'),
                         target: '-=1'
                     });
 
-                    $('.jcarousel-next').jcarouselControl({
+                    $('.brands-widget .jcarousel-next').jcarouselControl({
+                        carousel: $('.brands-widget .jcarousel'),
                         target: '+=1'
                     });
                 });

@@ -43,6 +43,45 @@ if($breadcrumb == '1') :
     <div class="ak-container left-sidebar"> 
         <div id="primary" class="content-area clearfix">
             <div class="content-inner">
+                <?php 
+                $currentTerm = get_queried_object();
+                ?>
+                <?php if(is_tax()&&$currentTerm->parent===0): ?>
+                <?php 
+                    $args = array(
+                        'taxonomy' => 'product_cat',
+                        'hide_empty' => 0,
+                        'parent' => $currentTerm->term_id,
+                    );
+                    $terms = get_terms($args);
+                    if(!empty($terms)):
+                        foreach($terms as $term):
+                            $termImg = get_stylesheet_directory_uri().'/images/no-image-icon.png';
+                            $termImgId = get_woocommerce_term_meta( $term->term_id, 'thumbnail_id', true );
+                            if($termImgId){
+                                $termImg = wp_get_attachment_url( $termImgId );
+                            }
+                            ?>
+                            <div class="category-item">
+                                <div class="image-wrap">
+                                    <a href="<?php echo get_term_link($term->term_id) ?>">
+                                        <img src="<?php echo $termImg ?>" alt="category-img" >
+                                    </a>
+                                </div>
+                                <div class="title"
+                                    <a href="<?php echo get_term_link($term->term_id) ?>">
+                                        <p><b><?php echo $term->name ?></b></p>
+                                    </a>
+                                </div>
+                            </div>
+                            <?php
+
+                        endforeach;
+                    else:
+                        wc_get_template('loop/no-products-found.php');
+                    endif; 
+                ?>
+                <?php else: ?>
                 <?php if ( have_posts() ) : ?>
                     <?php
                         /**
@@ -70,25 +109,33 @@ if($breadcrumb == '1') :
                          */
                         do_action('woocommerce_after_shop_loop');
                     ?>
-                <?php elseif (!woocommerce_product_subcategories(array('before' => woocommerce_product_loop_start(false), 'after' => woocommerce_product_loop_end(false)))) : ?>
+                    <?php elseif (!woocommerce_product_subcategories(array('before' => woocommerce_product_loop_start(false), 'after' => woocommerce_product_loop_end(false)))) : ?>
 
-                    <?php wc_get_template('loop/no-products-found.php'); ?>
+                        <?php wc_get_template('loop/no-products-found.php'); ?>
 
+                    <?php endif; ?>
+
+                    <?php
+                        /**
+                         * woocommerce_after_main_content hook
+                         *
+                         * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
+                         */
+                        do_action('woocommerce_after_main_content');
+                    ?>
                 <?php endif; ?>
-
-                <?php
-                    /**
-                     * woocommerce_after_main_content hook
-                     *
-                     * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
-                     */
-                    do_action('woocommerce_after_main_content');
-                ?>
             </div>
         </div>
-        <div id="secondary" class="widget-area secondary-left sidebar">
-            <?php do_action('woocommerce_sidebar'); ?>
-        </div>
+        <?php if(is_tax()&&$currentTerm->parent===0): ?>
+                <!-- This is Product 2 Section !-->
+                <div id="secondary" class="widget-area secondary-left sidebar">
+                        <?php dynamic_sidebar('subcategory-sidebar'); ?>
+                </div>
+        <?php else: ?>
+            <div id="secondary" class="widget-area secondary-left sidebar">
+                <?php do_action('woocommerce_sidebar'); ?>
+            </div>
+        <?php endif ?>
     </div>
 </div>
 <?php get_footer('shop');

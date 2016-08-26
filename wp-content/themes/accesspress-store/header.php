@@ -18,8 +18,9 @@
 </head>
 <body <?php body_class(); ?>>
     <div class="orange-line">
+        <div class="button">
         <?php echo do_shortcode('[sg_popup id=1]Заказать звонок[/sg_popup]') ?>
-        <div class="close">X</div>
+        </div>
     </div>
 <div id="page" class="hfeed site">
 
