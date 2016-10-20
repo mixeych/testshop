@@ -71,7 +71,6 @@ if (0 == $woocommerce_loop['loop'] % $woocommerce_loop['columns'])
     <div class="collection_desc clearfix">
         <a href="<?php the_permalink(); ?>" class="collection_title">
             <h3><?php the_title(); ?></h3>
-            <p class="short_desc"><?php echo accesspress_letter_count( get_the_excerpt(), 20 ); ?></p>
         </a>
         <div class="price-cart">
             <?php

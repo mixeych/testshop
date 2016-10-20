@@ -54,9 +54,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <?php endif; ?>
 
-<header class="title">
+<!-- <header class="title">
 	<h3><?php _e( 'Billing Address', 'woocommerce' ); ?></h3>
-</header>
+</header> -->
 <address>
 	<?php echo ( $address = $order->get_formatted_billing_address() ) ? $address : __( 'N/A', 'woocommerce' ); ?>
 </address>

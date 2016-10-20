@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: Tue Aug 16 2016 13:40:30 GMT+0545 (Nepal Standard Time)\n"
 "POT-Revision-Date: Tue Aug 16 2016 13:40:37 GMT+0545 (Nepal Standard Time)\n"
-"PO-Revision-Date: 2016-08-26 14:09+0000\n"
+"PO-Revision-Date: 2016-08-29 07:47+0000\n"
 "Last-Translator: admin <sheva-gitara@mail.ru>\n"
 "Language-Team: Russian\n"
 "Language: ru-RU\n"
@@ -78,10 +78,6 @@ msgstr ""
 #: ../content-blog.php:86 ../content-page.php:23 ../content-single.php:30
 msgid "Pages:"
 msgstr ""
-
-#: ../content-none.php:13
-msgid "Nothing Found"
-msgstr "Ничего не найдено"
 
 #: ../content-none.php:19
 msgid ""
@@ -251,10 +247,6 @@ msgstr ""
 
 #: ../inc/accesspress-function.php:466
 msgctxt "breadcrumb"
-msgid "Home"
-msgstr ""
-
-#: ../inc/accesspress-function.php:482
 msgid "Home"
 msgstr "Главная"
 
@@ -1928,6 +1920,14 @@ msgstr ""
 #. Author URI of the theme
 msgid "http://accesspressthemes.com/"
 msgstr ""
+
+#: ../content-none.php:13
+msgid "Nothing Found"
+msgstr "Ничего не найдено"
+
+#: ../inc/accesspress-function.php:482
+msgid "Home"
+msgstr "Главная"
 
 #: ../header/header-one.php:62 ../header/header-two.php:68
 msgid " Logout"

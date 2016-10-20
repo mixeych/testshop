@@ -18,10 +18,21 @@
 </head>
 <body <?php body_class(); ?>>
     <div class="orange-line">
-        <div class="button">
-        <?php echo do_shortcode('[sg_popup id=1]Заказать звонок[/sg_popup]') ?>
-        </div>
+            <div class="container">
+                <?php dynamic_sidebar('header-yellow-line') ?>
+                <div class="button">
+                    <?php echo do_shortcode('[sg_popup id=1]Заказать звонок[/sg_popup]') ?>
+                </div>
+            </div>
+            
     </div>
+    <?php
+        // wp_nav_menu(array(
+        //     'theme_location' => 'primary',
+        //     'container_class' => 'store-menu',
+        //     'fallback_cb' => 'accesspress_store_fallback_menu',
+        // ));
+    ?>
 <div id="page" class="hfeed site">
 
 <?php

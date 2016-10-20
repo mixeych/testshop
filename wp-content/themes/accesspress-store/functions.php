@@ -63,6 +63,9 @@ function accesspress_store_setup() {
 	register_nav_menus( array(
 		'primary' => __( 'Primary Menu', 'accesspress-store' ),
 	) );
+	register_nav_menus( array(
+		'top' => __( 'Top Menu', 'accesspress-store' ),
+	) );
 
 	/*
 	 * Switch default core markup for search form, comment form, and comments
@@ -333,4 +336,36 @@ function accesspressstore_get_themes( $request ) {
 		}
 	}
 	return $themes;
+}
+
+add_filter('woocommerce_currency_symbol', 'change_existing_currency_symbol', 10, 2);
+function change_existing_currency_symbol( $currency_symbol, $currency ) {
+switch( $currency ) {
+case 'UAH': $currency_symbol = 'грн.'; break;
+}
+return $currency_symbol;
+}
+
+add_filter('woocommerce_checkout_fields', 'change_checkout_fields');
+function change_checkout_fields($fields){
+	unset($fields['billing']['billing_company']);
+	unset($fields['billing']['billing_country']);
+	unset($fields['billing']['billing_address_1']);
+	unset($fields['billing']['billing_address_2']);
+	unset($fields['billing']['billing_city']);
+	unset($fields['billing']['billing_state']);
+	unset($fields['billing']['billing_state']);
+	unset($fields['billing']['billing_postcode']);
+	unset($fields['billing']['billing_last_name']);
+	$fields['billing']['billing_email']['required'] = false;
+	$fields['billing']['billing_first_name']['label'] = 'Имя и Фамилия';
+	$fields['billing']['billing_first_name']['class'] = '';
+	return $fields;
+}
+
+add_filter('woof_before_term_name', 'add_seo_links_to_filter', 10, 2);
+
+function add_seo_links_to_filter($term, $taxonomy_info){
+	$termLink = get_term_link($term['term_id'], $term['taxonomy']);
+	return "<a class='term-label' href='".$termLink."'>".$term['name']."</a>";
 }

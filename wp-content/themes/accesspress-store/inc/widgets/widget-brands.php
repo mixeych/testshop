@@ -27,7 +27,7 @@ class BrandsSliderWidget extends WP_Widget {
 .brands-widget.jcarousel-wrapper {
     border: 10px solid #fff;
     border-radius: 5px;
-    box-shadow: 0 0 2px #999;
+    box-shadow: 0 0 2px #f5b764;
     margin: 20px auto;
     max-width: 100%;
     position: relative;

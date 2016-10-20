@@ -122,9 +122,14 @@ class WC_Admin_Attributes {
 		}
 
 		$wpdb->insert( $wpdb->prefix . 'woocommerce_attribute_taxonomies', $attribute );
-
+                
 		do_action( 'woocommerce_attribute_added', $wpdb->insert_id, $attribute );
-
+                if(function_exists('add_category_attribute')){
+                    $attribute_id = (int) $wpdb->insert_id;
+                    $categories = $_POST['attribute_category'];
+                    add_category_attribute($attribute_id, $categories);
+                }
+                
 		flush_rewrite_rules();
 		delete_transient( 'wc_attribute_taxonomies' );
 
@@ -197,9 +202,14 @@ class WC_Admin_Attributes {
 				array( 'meta_key' => 'attribute_pa_' . sanitize_title( $old_attribute_name ) )
 			);
 		}
-
+                
+                if(function_exists('add_category_attribute')){
+                    $attribute_id = (int) $attribute_id;
+                    $categories = $_POST['attribute_category'];
+                    add_category_attribute($attribute_id, $categories);
+                }
 		echo '<div class="updated"><p>' . __( 'Attribute updated successfully', 'woocommerce' ) . '</p></div>';
-
+                
 		flush_rewrite_rules();
 		delete_transient( 'wc_attribute_taxonomies' );
 
@@ -335,6 +345,47 @@ class WC_Admin_Attributes {
 									<p class="description"><?php _e( 'Determines the sort order of the terms on the frontend shop product pages. If using custom ordering, you can drag and drop the terms in this attribute.', 'woocommerce' ); ?></p>
 								</td>
 							</tr>
+                                                        <?php if(function_exists('mix_get_attribute_category')): ?>
+							<tr class="form-field form-required">
+								<th scope="row" valign="top">
+									<label>Категории</label>
+                                                                        <p>Выберите категории для этого атрибута</p>
+								</th>
+								<td>
+                                                                    <?php 
+                                                                        $terms = get_terms('product_cat', array('hide_empty' => false));
+                                                                        $termsAttr = mix_get_attribute_category($attribute_to_edit->attribute_id);
+//                                                                        echo "<pre>";
+//                                                                            var_dump($termsAttr);
+//                                                                            echo "</pre>";
+                                                                        foreach($terms as $term){
+                                                                            $checked = false;
+                                                                            foreach($termsAttr as $t_atr){
+                                                                                if($t_atr->term_id==$term->term_id){
+                                                                                    $checked = true;
+                                                                                }
+                                                                            }
+                                                                            ?>
+                                                                        <label>
+                                                                        <?php 
+                                                                        if(!$term->parent){ 
+									                                    		echo "<b>"; 
+									                                    	}
+                                                                        ?>
+                                                                            <?php echo $term->name ?>
+                                                                            <?php 
+                                                                            	if(!$term->parent){ 
+									                                    		echo "</b>"; 
+									                                    	}
+                                                                            ?>
+                                                                        <input type="checkbox" name="attribute_category[]" class="attribute_category" value="<?php echo $term->term_id ?>" <?php if($checked){ echo "checked='checked'"; } ?> >
+                                                                        </label>
+                                                                        <?php
+                                                                        }
+                                                                        ?>
+								</td>
+							</tr>
+                                                        <?php endif; ?>
 						</tbody>
 					</table>
 					<p class="submit"><input type="submit" name="save_attribute" id="submit" class="button-primary" value="<?php esc_attr_e( 'Update', 'woocommerce' ); ?>"></p>
@@ -488,7 +539,46 @@ class WC_Admin_Attributes {
 									</select>
 									<p class="description"><?php _e( 'Determines the sort order of the terms on the frontend shop product pages. If using custom ordering, you can drag and drop the terms in this attribute.', 'woocommerce' ); ?></p>
 								</div>
+                            <?php if(function_exists('mix_create_attribute_category_table')): ?>
+                            	<div class="form-field">
+									<label>Категории</label>
+                                    <p>Выберите категории для этого атрибута</p>
+                                    <div class="category-attribute">
+                                    	<div class="cat-parent">
+										<?php 
+										$i = 0;
+	                                    $terms = get_terms('product_cat', array('hide_empty' => false));
+	                                    foreach($terms as $term){
+	                                        ?>
+	                                    
+	                                    <?php 
+	                                    	if(!$term->parent&&$i){
+	                                    		echo "</div><div class='cat-parent'>";
+	                                    	}
+	                                    	?>
+	                                    	<label>
+	                                    	<?php
+	                                    	if(!$term->parent){ 
+	                                    		echo "<b>"; 
+	                                    	}
+	                                   		?>
 
+                                        <?php echo $term->name ?>
+                                        <?php 
+                                        	if(!$term->parent){ 
+                                        		echo "</b>"; 
+                                        	}
+                                        ?>
+	                                    <input type="checkbox" name="attribute_category[]" class="attribute_category" value="<?php echo $term->term_id ?>" >
+	                                    </label>
+	                                    <?php
+	                                    	$i++;
+	                                    }
+	                                    ?>
+	                                    </div>
+                                    </div>
+								</div>
+                                                                <?php endif; ?>
 								<p class="submit"><input type="submit" name="add_new_attribute" id="submit" class="button button-primary" value="<?php esc_attr_e( 'Add Attribute', 'woocommerce' ); ?>"></p>
 								<?php wp_nonce_field( 'woocommerce-add-new_attribute' ); ?>
 							</form>

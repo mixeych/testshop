@@ -76,7 +76,7 @@ if($breadcrumb == '1') :
              *
              * @hooked woocommerce_get_sidebar - 10
              */
-            do_action('woocommerce_sidebar');
+            dynamic_sidebar('subcategory-sidebar'); 
             ?>
         </div>
     </div>

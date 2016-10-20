@@ -136,5 +136,14 @@ do_action('accesspress_slickslider');
         </div>
     </section>
 <?php endif; ?>
-
+<?php 
+if(have_posts()){
+    the_post();
+    ?>
+    <div class="container">
+        <p class="content"><?php the_content(); ?></p>
+    </div>
+    <?php
+}
+?>
 <?php get_footer(); ?>

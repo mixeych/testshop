@@ -45,6 +45,15 @@ function accesspress_store_widgets_init() {
 		'before_title'  => '<span class="widget-title">',
 		'after_title'   => '</span>',
 	) );
+        
+        
+	register_sidebar( array(
+                'before_widget' => '<div id="yellow-line-sidebar" class="%2$s '.accesspress_count_widgets( 'header-yellow' ).'">',
+		'after_widget'  => '</div>',
+		'name'          => __( 'Header Yelow Line', 'accesspress-store' ),
+		'id'            => 'header-yellow-line',
+		'description'   => '',
+	) );
 	
 	register_sidebar( array(
 		'name'          => __( 'AP: Promo Widget 1', 'accesspress-store' ),

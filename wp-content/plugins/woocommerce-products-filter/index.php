@@ -7,7 +7,7 @@
   Tested up to: WP 4.5.3
   Author: realmag777
   Author URI: http://pluginus.net/
-  Version: 1.1.5.1
+  Version: 99.1.5.1
   Tags: filter,search,woocommerce,woocommerce filter,woocommerce product filter,woocommerce products filter,products filter,product filter,filter of products,filter for products,filter for woocommerce
   Text Domain: woocommerce-products-filter
   Domain Path: /languages
@@ -939,7 +939,8 @@ final class WOOF
 		'popularity': "<?php _e('popularity', 'woocommerce-products-filter') ?>",
 		'rating': "<?php _e('rating', 'woocommerce-products-filter') ?>",
 		'price': "<?php _e('price high to low', 'woocommerce-products-filter') ?>",
-		'price-desc': "<?php _e('price low to high', 'woocommerce-products-filter') ?>"
+		'price-desc': "<?php _e('price low to high', 'woocommerce-products-filter') ?>",
+		'date': "<?php _e('date', 'woocommerce-products-filter') ?>"
 	    };
 
 

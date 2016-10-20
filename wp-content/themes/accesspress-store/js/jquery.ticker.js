@@ -155,6 +155,7 @@
 						else if (e.type == 'mousedown' && $('#' + button).hasClass('controls')) {
 							$('#' + button).addClass('down');
 						}
+
 						else if (e.type == 'mouseup' && $('#' + button).hasClass('controls')) {
 							$('#' + button).removeClass('down');
 						}

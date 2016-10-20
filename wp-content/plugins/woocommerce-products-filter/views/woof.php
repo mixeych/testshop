@@ -133,7 +133,9 @@ if (!function_exists('woof_print_tax'))
 			if ($WOOF->settings['show_title_label'][$tax_slug])
 			{
 			    ?>
-		    	<<?php echo apply_filters('woof_title_tag', 'h4'); ?>><?php echo WOOF_HELPER::wpml_translate($taxonomies_info[$tax_slug]) ?><?php WOOF_HELPER::draw_title_toggle($show_toggle, $block_is_closed); ?></<?php echo apply_filters('woof_title_tag', 'h4'); ?>>
+                        <div class="show-title">
+		    	<<?php echo apply_filters('woof_title_tag', 'h4'); ?> class="widget-title"><?php echo WOOF_HELPER::wpml_translate($taxonomies_info[$tax_slug]) ?><?php WOOF_HELPER::draw_title_toggle($show_toggle, $block_is_closed); ?></<?php echo apply_filters('woof_title_tag', 'h4'); ?>><i class="fa fa-caret-down" aria-hidden="true"></i>
+                        </div>
 			    <?php
 			}
 
@@ -153,7 +155,7 @@ if (!function_exists('woof_print_tax'))
 			if ($WOOF->settings['show_title_label'][$tax_slug])
 			{
 			    ?>
-		    	<<?php echo apply_filters('woof_title_tag', 'h4'); ?>><?php echo WOOF_HELPER::wpml_translate($taxonomies_info[$tax_slug]) ?><?php WOOF_HELPER::draw_title_toggle($show_toggle, $block_is_closed); ?></<?php echo apply_filters('woof_title_tag', 'h4'); ?>>
+		    	<<?php echo apply_filters('woof_title_tag', 'h4'); ?> class="widget-title"><?php echo WOOF_HELPER::wpml_translate($taxonomies_info[$tax_slug]) ?><?php WOOF_HELPER::draw_title_toggle($show_toggle, $block_is_closed); ?></<?php echo apply_filters('woof_title_tag', 'h4'); ?>>
 			    <?php
 			}
 			?>
@@ -168,7 +170,7 @@ if (!function_exists('woof_print_tax'))
 			if ($WOOF->settings['show_title_label'][$tax_slug])
 			{
 			    ?>
-		    	<<?php echo apply_filters('woof_title_tag', 'h4'); ?>><?php echo WOOF_HELPER::wpml_translate($taxonomies_info[$tax_slug]) ?><?php WOOF_HELPER::draw_title_toggle($show_toggle, $block_is_closed); ?></<?php echo apply_filters('woof_title_tag', 'h4'); ?>>
+		    	<<?php echo apply_filters('woof_title_tag', 'h4'); ?> class="widget-title"><?php echo WOOF_HELPER::wpml_translate($taxonomies_info[$tax_slug]) ?><?php WOOF_HELPER::draw_title_toggle($show_toggle, $block_is_closed); ?></<?php echo apply_filters('woof_title_tag', 'h4'); ?>>
 			    <?php
 			}
 			?>
@@ -184,7 +186,7 @@ if (!function_exists('woof_print_tax'))
 			if ($WOOF->settings['show_title_label'][$tax_slug])
 			{
 			    ?>
-		    	<<?php echo apply_filters('woof_title_tag', 'h4'); ?>><?php echo WOOF_HELPER::wpml_translate($taxonomies_info[$tax_slug]) ?><?php WOOF_HELPER::draw_title_toggle($show_toggle, $block_is_closed); ?></<?php echo apply_filters('woof_title_tag', 'h4'); ?>>
+		    	<<?php echo apply_filters('woof_title_tag', 'h4'); ?> class="widget-title"><?php echo WOOF_HELPER::wpml_translate($taxonomies_info[$tax_slug]) ?><?php WOOF_HELPER::draw_title_toggle($show_toggle, $block_is_closed); ?></<?php echo apply_filters('woof_title_tag', 'h4'); ?>>
 			    <?php
 			}
 
@@ -268,7 +270,7 @@ if (!function_exists('woof_print_item_by_key'))
 		    	<div class="woocommerce widget_price_filter">
 				<?php //the_widget('WC_Widget_Price_Filter', array('title' => ''));      ?>
 				<?php if (isset($WOOF->settings['by_price']['title_text']) AND ! empty($WOOF->settings['by_price']['title_text'])): ?>
-				    <<?php echo apply_filters('woof_title_tag', 'h4'); ?>><?php echo $WOOF->settings['by_price']['title_text']; ?></<?php echo apply_filters('woof_title_tag', 'h4'); ?>>
+				    <<?php echo apply_filters('woof_title_tag', 'h4'); ?> class="widget-title"><?php echo $WOOF->settings['by_price']['title_text']; ?></<?php echo apply_filters('woof_title_tag', 'h4'); ?>>
 				<?php endif; ?>
 				<?php WOOF_HELPER::price_filter(); ?>
 		    	</div>
@@ -297,7 +299,7 @@ if (!function_exists('woof_print_item_by_key'))
 		        <div class="woof_container_overlay_item"></div>
 		        <div class="woof_container_inner">
 			    <?php if (isset($WOOF->settings['by_price']['title_text']) AND ! empty($WOOF->settings['by_price']['title_text'])): ?>
-				<<?php echo apply_filters('woof_title_tag', 'h4'); ?>><?php echo $WOOF->settings['by_price']['title_text']; ?></<?php echo apply_filters('woof_title_tag', 'h4'); ?>>
+				<<?php echo apply_filters('woof_title_tag', 'h4'); ?> class="widget-title"><?php echo $WOOF->settings['by_price']['title_text']; ?></<?php echo apply_filters('woof_title_tag', 'h4'); ?>>
 			    <?php endif; ?>
 
 			    <?php echo do_shortcode('[woof_price_filter type="slider" additional_taxes="' . $additional_taxes . '"]'); ?>
@@ -441,7 +443,16 @@ if (!function_exists('woof_print_item_by_key'))
 			}
 
 			//lets print our items and taxonomies
+                        if(function_exists('get_attr_ids_by_category')){
+                            $currentTermId = false;
+                            if(is_tax()){
+                                $currTerm = get_queried_object();
+                                $currentTermId = (int) $currTerm->term_id;
+                                $termAttributes = get_attr_ids_by_category($currentTermId);
+                            }
+                        }
 			$counter = 0;
+                        
 			foreach ($items_order as $key)
 			{
 			    if (in_array($key, $this->items_keys))
@@ -453,6 +464,24 @@ if (!function_exists('woof_print_item_by_key'))
 				{
 				    continue;
 				}
+                                if(function_exists('mix_get_attribute_category')){
+                                    if(substr($key, 0, 3) == 'pa_'){
+                                        $attrSlug = substr($key, 3);
+                                        $attrId = mix_get_id_attribute_by_slug($attrSlug);
+                                        if(empty($termAttributes)){
+                                            continue;
+                                        }
+                                        $check = false;
+                                        foreach ($termAttributes as $termAttr){
+                                            if($attrId == $termAttr->attr_id){
+                                                $check = true;
+                                            }
+                                        }
+                                        if(!$check){
+                                            continue;
+                                        }
+                                    }   
+                                }
 				woof_print_tax($taxonomies, $key, $taxonomies[$key], $exclude_tax_key, $taxonomies_info, $additional_taxes, $woof_settings, $args, $counter);
 			    }
 			    $counter++;

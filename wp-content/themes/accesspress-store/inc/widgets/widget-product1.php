@@ -179,7 +179,7 @@ public function widget($args, $instance){
         ?>
         <li class="span3 wow flipInY" data-wow-delay="<?php echo $count ?>s">
           <div class="item-img">
-            <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">  
+            <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="">  
               <?php
               if ($product_label_custom != ''){
                 echo '<span class="label-new">'.$product_label_custom.'</span>';
@@ -195,8 +195,9 @@ public function widget($args, $instance){
               do_action( 'woocommerce_before_shop_loop_item_title' );
               ?>
             </a>
+             <a href="<?php the_permalink(); ?>" class="button product_type_simple"></a>
             <?php
-            woocommerce_template_loop_add_to_cart( $product_loop->post, $product );
+         //  woocommerce_template_loop_add_to_cart( $product_loop->post, $product );
             ?>
           </div>
           <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">  

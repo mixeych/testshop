@@ -15,12 +15,12 @@ get_header(); ?>
 			</header><!-- .page-header -->
 
 			<div class="page-content">
-				<p><?php _e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'accesspress-store' ); ?></p>
+				<p>Перейдите пожалуйста на <a href="<?php echo home_url() ?>">главную страницу</a> и уточните критерии поиска</p>
 			</div><!-- .page-content -->
 
 			<div class="number404">
 				404 
-				<span>error</span>   
+				<span>Ошибка</span>   
 			</div>
 		</section><!-- .error-404 -->		
 	</div><!-- #primary -->

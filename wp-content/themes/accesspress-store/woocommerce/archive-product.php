@@ -138,4 +138,7 @@ if($breadcrumb == '1') :
         <?php endif ?>
     </div>
 </div>
+<div class="container">
+    <p><?php echo $currentTerm->description ?></p>
+</div>
 <?php get_footer('shop');

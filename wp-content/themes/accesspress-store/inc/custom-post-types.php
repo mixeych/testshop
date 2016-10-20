@@ -19,17 +19,17 @@ add_action( 'init', 'mix_create_brands_taxonomy', 0 );
 
 function mix_create_brands_taxonomy(){
     $labels = array(
-        'name' => 'Brands',
-        'singular_name' => 'Brand',
-        'menu_name' => 'Brands',
-        'search_items'      => 'Search Brands',
-        'all_items'         => 'All Brands',
-        'parent_item'       => 'Parent Brand',
-        'parent_item_colon' => 'Parent Brand:',
-        'edit_item'         => 'Edit Brand',
-        'update_item'       => 'Update Brand',
-        'add_new_item'      => 'Add New Brand',
-        'new_item_name'     => 'New Brand Name',
+        'name' => 'Список производителей',
+        'singular_name' => __('Brand', 'accesspress-store'),
+        'menu_name' => __('Brands', 'accesspress-store'),
+        'search_items'      =>  __('Search Brands', 'accesspress-store'),
+        'all_items'         =>  __('All Brands', 'accesspress-store'),
+        'parent_item'       =>  __('Parent Brand', 'accesspress-store'),
+        'parent_item_colon' =>  __('Parent Brand:', 'accesspress-store'),
+        'edit_item'         => __('Edit Brand', 'accesspress-store'),
+        'update_item'       =>  __('Update Brand', 'accesspress-store'),
+        'add_new_item'      =>  __('Add New Brand', 'accesspress-store'),
+        'new_item_name'     => __('New Brand Name', 'accesspress-store'),
     );
 
     register_taxonomy('brand', array('product'), array(

@@ -31,7 +31,7 @@ if($breadcrumb == '1') :
 <div class="page_header_wrap clearfix" style="background:url('<?php echo $bread_archive; ?>') no-repeat center; background-size: cover;">
     <div class="ak-container">
         <header class="entry-header">
-            <?php the_title('<h2 class="entry-title">', '</h2>'); ?>
+            <?php the_title('<h1 class="entry-title">', '</h1>'); ?>
         </header><!-- .entry-header -->
         <?php accesspress_breadcrumbs() ?>
     </div>

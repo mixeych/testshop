@@ -1,5 +1,14 @@
 jQuery(function ($) {
 
+    $(document).on('click', ".show-title", function(){
+        $(this).next().slideToggle();
+    });
+    
+    $(document).on('click', '.term-label', function(e){
+        e.preventDefault();
+        $(this).parent().siblings("input[type=checkbox]").click();
+    });
+
     //Navigation toggle
     $("#toggle").click(function () {
         $(this).toggleClass("on");
