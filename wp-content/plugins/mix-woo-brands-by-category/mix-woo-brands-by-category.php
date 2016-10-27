@@ -112,17 +112,22 @@ function getBrandsByCategories($categId){
 add_filter('woof_sort_terms_before_out', 'mix_check_brand_category', 10, 2);
 
 function mix_check_brand_category($terms, $type){
-    
     $first = reset($terms);
     if($first['taxonomy'] != 'brand'){
         return $terms;
     }
-    $currTerm = get_queried_object();
-    $currentTermId = (int) $currTerm->term_id;
-    $brands = getBrandsByCategories($currentTermId);
-//    if(empty($brands)){
-//        return $terms;
-//    }
+    if(is_tax()){
+        $currTerm = get_queried_object();
+        $currentTermId = (int) $currTerm->term_id;
+        $brands = getBrandsByCategories($currentTermId);
+        $_SESSION['current_term_id'] = $currentTermId;
+    }else{
+        $brands = getBrandsByCategories($_SESSION['current_term_id']);
+    }
+    
+    if(empty($brands)){
+        return $terms;
+    }
     $newTerms = array();
     foreach($brands as $brand){
         $newTerms[$brand->brand_id] = $terms[$brand->brand_id];

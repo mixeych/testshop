@@ -87,9 +87,6 @@ class BrandsSliderWidget extends WP_Widget {
             <div class="jcarousel">
                 <ul class="mix-brands-widget-list">
                     <?php 
-//                    echo "<pre>";
-//                        var_dump($brands);
-//                        echo "</pre>";
                         foreach($brands as $brand):
                             $img = get_field('image', 'brand_'.$brand->term_id);
                         if(!isset($img['url'])){
@@ -116,12 +113,12 @@ class BrandsSliderWidget extends WP_Widget {
                     });
                     $('.brands-widget .jcarousel-prev').jcarouselControl({
                         carousel: $('.brands-widget .jcarousel'),
-                        target: '-=1'
+                        target: '-=6'
                     });
 
                     $('.brands-widget .jcarousel-next').jcarouselControl({
                         carousel: $('.brands-widget .jcarousel'),
-                        target: '+=1'
+                        target: '+=6'
                     });
                 });
                 

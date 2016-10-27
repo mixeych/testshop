@@ -8,7 +8,14 @@
 
 register_activation_hook(__FILE__, 'mix_create_attribute_category_table');
 add_action('woocommerce_attribute_deleted', 'mix_attribute_action_delete', 10, 3);
+add_action('init', 'mix_session_start');
 
+function mix_session_start(){
+    $sessStatus = session_status();
+    if($sessStatus == 'PHP_SESSION_DISABLED'||$sessStatus===0 ){
+        session_start();
+    }
+}
 
 function mix_create_attribute_category_table(){
     require_once(ABSPATH . 'wp-admin/includes/upgrade.php');

@@ -445,10 +445,13 @@ if (!function_exists('woof_print_item_by_key'))
 			//lets print our items and taxonomies
                         if(function_exists('get_attr_ids_by_category')){
                             $currentTermId = false;
+                            $currTerm = get_queried_object();
                             if(is_tax()){
-                                $currTerm = get_queried_object();
                                 $currentTermId = (int) $currTerm->term_id;
+                                $_SESSION['current_term_id'] = $currentTermId;
                                 $termAttributes = get_attr_ids_by_category($currentTermId);
+                            }else{
+                                $termAttributes = get_attr_ids_by_category($_SESSION['current_term_id']);
                             }
                         }
 			$counter = 0;
